@@ -1,0 +1,6 @@
+{
+    "file_access": true,
+    "internet_access": true,
+    "camera_access": false,
+    "microphone_access": false
+}

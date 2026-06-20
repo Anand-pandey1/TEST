@@ -1,0 +1,6 @@
+{
+    "assistant_name": "TEST",
+    "version": "0.1.0",
+    "voice_enabled": false,
+    "memory_enabled": true
+}
