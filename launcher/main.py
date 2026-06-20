@@ -27,7 +27,7 @@ def main():
 
             break
 
-        print(f"You said: {command}")
+        test.process_command(command)
 
 
 if __name__ == "__main__":
