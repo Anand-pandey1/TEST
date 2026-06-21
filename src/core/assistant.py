@@ -1,6 +1,8 @@
 from src.core.config import Config
 from src.core.event_bus import EventBus
+
 from src.automation.action_engine import ActionEngine
+
 
 class TestAssistant:
 
@@ -20,17 +22,24 @@ class TestAssistant:
     def start(self):
 
         print("=" * 40)
-        print(f"{self.name} Assistant Started")
+        print(
+            f"{self.name} Assistant Started"
+        )
         print("=" * 40)
 
     def stop(self):
 
         print("Assistant stopped.")
 
-    def process_command(self, command):
+    def process_command(
+        self,
+        command
+    ):
 
-        success, message = self.action_engine.execute(
-            command
+        success, message = (
+            self.action_engine.execute(
+                command
+            )
         )
 
         print(message)

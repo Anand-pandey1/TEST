@@ -1,31 +1,63 @@
+from src.automation.command_parser import CommandParser
+
 from src.automation.app_control import open_app
 from src.automation.process_control import close_app
+
+from src.automation.file_search import FileSearcher
+from src.automation.file_manager import FileManager
 
 
 class ActionEngine:
 
-    def execute(self, command: str):
+    def __init__(self):
 
-        command = command.strip().lower()
+        self.parser = CommandParser()
 
-        if command.startswith("open "):
+        self.searcher = FileSearcher()
 
-            app = command.replace(
-                "open ",
-                "",
-                1
-            ).strip()
+        self.file_manager = FileManager()
 
-            return open_app(app)
+    def execute(self, command):
 
-        if command.startswith("close "):
+        intent = self.parser.parse(
+            command
+        )
 
-            app = command.replace(
-                "close ",
-                "",
-                1
-            ).strip()
+        if not intent:
+            return False, "Unknown command"
 
-            return close_app(app)
+        action = intent["action"]
 
-        return False, "Unknown command"
+        if action == "open_app":
+
+            return open_app(
+                intent["target"]
+            )
+
+        if action == "close_app":
+
+            return close_app(
+                intent["target"]
+            )
+
+        if action == "find_file":
+
+            results = self.searcher.search(
+                intent["target"]
+            )
+
+            if results:
+
+                return True, "\n".join(
+                    results
+                )
+
+            return False, "File not found"
+
+        if action == "list_files":
+
+            return self.file_manager.list_files(
+                intent["target"]
+            )
+
+        return False, "Unknown action"

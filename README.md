@@ -117,7 +117,10 @@ F:\TEST
 │   ├── automation
 │   │   ├── action_engine.py
 │   │   ├── app_control.py
-│   │   └── task_runner.py
+│   │   ├── task_runner.py
+|   |   ├── file_search.py
+|   |   ├── file_manager.py
+|   |   └── command_parser.py
 │   │
 │   └── api
 │       ├── server.py
