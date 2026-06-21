@@ -153,10 +153,10 @@ F:\TEST
 
 ## Phase 1 — Windows Control
 
-* [ ] Open applications
-* [ ] Close applications
-* [ ] Search files
-* [ ] Folder management
+* [x] Open applications
+* [x] Close applications
+* [x] Search files
+* [x] Folder management
 
 ---
 
