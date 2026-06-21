@@ -42,6 +42,39 @@ class CommandParser:
                 "target": command[7:]
             }
 
+        if command.startswith("create folder "):
+            return {
+                "action": "create_folder",
+                "target": command[14:]
+            }
+
+        if command.startswith("delete folder "):
+            return {
+                "action": "delete_folder",
+                "target": command[14:]
+            }
+
+        if command.startswith("delete file "):
+            return {
+                "action": "delete_file",
+                "target": command[12:]
+            }
+
+        if command.startswith("move "):
+            parts = command[5:].split(" to ")
+            if len(parts) == 2:
+                return {
+                    "action": "move_file",
+                    "source": parts[0].strip(),
+                    "destination": parts[1].strip()
+                }
+
+        if command.startswith("create file "):
+            return {
+                "action": "create_file",
+                "target": command[12:]
+            }
+
         if command.startswith("list files in "):
             return {
                 "action": "list_files",

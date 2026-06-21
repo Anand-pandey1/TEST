@@ -1,4 +1,5 @@
 from pathlib import Path
+import shutil
 
 
 class FileManager:
@@ -37,6 +38,30 @@ class FileManager:
             Path(path).unlink()
 
             return True, f"Deleted: {path}"
+
+        except Exception as e:
+
+            return False, str(e)
+
+    def delete_folder(self, path):
+
+        try:
+
+            shutil.rmtree(path)
+
+            return True, f"Deleted folder: {path}"
+
+        except Exception as e:
+
+            return False, str(e)
+
+    def move_file(self, source, destination):
+
+        try:
+
+            shutil.move(source, destination)
+
+            return True, f"Moved {source} to {destination}"
 
         except Exception as e:
 

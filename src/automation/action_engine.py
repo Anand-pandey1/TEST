@@ -5,6 +5,7 @@ from src.automation.process_control import close_app
 
 from src.automation.file_search import FileSearcher
 from src.automation.file_manager import FileManager
+from src.automation.storage_resolver import StorageResolver
 
 
 class ActionEngine:
@@ -16,6 +17,8 @@ class ActionEngine:
         self.searcher = FileSearcher()
 
         self.file_manager = FileManager()
+
+        self.storage_resolver = StorageResolver()
 
     def execute(self, command):
 
@@ -56,8 +59,95 @@ class ActionEngine:
 
         if action == "list_files":
 
-            return self.file_manager.list_files(
-                intent["target"]
-            )
+            target = intent["target"]
+            resolved_path = self.storage_resolver.resolve(target)
+            
+            if resolved_path:
+                return self.file_manager.list_files(resolved_path)
+            
+            return self.file_manager.list_files(target)
+
+        if action == "create_folder":
+
+            target = intent["target"]
+            resolved_path = self.storage_resolver.resolve(target)
+
+            if resolved_path:
+                # Extract folder name and build full path
+                folder_name = target.split()
+                if folder_name:
+                    folder_name = folder_name[0]
+                    full_path = resolved_path + folder_name
+                    return self.file_manager.create_folder(full_path)
+            
+            return self.file_manager.create_folder(target)
+
+        if action == "create_file":
+
+            target = intent["target"]
+            resolved_path = self.storage_resolver.resolve(target)
+
+            if resolved_path:
+                # Extract file name and build full path
+                file_name = target.split()
+                if file_name:
+                    file_name = file_name[0]
+                    full_path = resolved_path + file_name
+                    return self.file_manager.create_text_file(full_path)
+            
+            return self.file_manager.create_text_file(target)
+
+        if action == "delete_folder":
+
+            target = intent["target"]
+            resolved_path = self.storage_resolver.resolve(target)
+
+            if resolved_path:
+                # Extract folder name and build full path
+                folder_name = target.split()
+                if folder_name:
+                    folder_name = folder_name[0]
+                    full_path = resolved_path + folder_name
+                    return self.file_manager.delete_folder(full_path)
+            
+            return self.file_manager.delete_folder(target)
+
+        if action == "delete_file":
+
+            target = intent["target"]
+            resolved_path = self.storage_resolver.resolve(target)
+
+            if resolved_path:
+                # Extract file name and build full path
+                file_name = target.split()
+                if file_name:
+                    file_name = file_name[0]
+                    full_path = resolved_path + file_name
+                    return self.file_manager.delete_file(full_path)
+            
+            return self.file_manager.delete_file(target)
+
+        if action == "move_file":
+
+            source = intent["source"]
+            destination = intent["destination"]
+            
+            # Build source path
+            source_resolved = self.storage_resolver.resolve(source)
+            if source_resolved:
+                source_path = source.lower()
+                for drive, drive_path in self.storage_resolver.DRIVES.items():
+                    source_path = source_path.replace(drive + " ", "")
+                source = source_resolved + source_path.replace(" ", "\\")
+            
+            # Build destination path
+            dest_resolved = self.storage_resolver.resolve(destination)
+            if dest_resolved:
+                dest_path = destination.lower()
+                for drive, drive_path in self.storage_resolver.DRIVES.items():
+                    dest_path = dest_path.replace(drive + " ", "")
+                destination = dest_resolved + dest_path.replace(" ", "\\")
+            
+            return self.file_manager.move_file(source, destination)
 
         return False, "Unknown action"
