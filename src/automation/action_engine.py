@@ -7,6 +7,10 @@ from src.automation.file_search import FileSearcher
 from src.automation.file_manager import FileManager
 from src.automation.storage_resolver import StorageResolver
 
+from src.memory.memory_manager import (
+    MemoryManager
+)
+
 
 class ActionEngine:
 
@@ -19,6 +23,10 @@ class ActionEngine:
         self.file_manager = FileManager()
 
         self.storage_resolver = StorageResolver()
+
+        self.memory_manager = (MemoryManager())
+
+
 
     def execute(self, command):
 
@@ -149,5 +157,18 @@ class ActionEngine:
                 destination = dest_resolved + dest_path.replace(" ", "\\")
             
             return self.file_manager.move_file(source, destination)
+        
+        if action == "remember":
+
+            return self.memory_manager.remember(
+                intent["key"],
+                intent["value"]
+            )
+
+        if action == "recall":
+
+            return self.memory_manager.recall(
+                intent["key"]
+            )
 
         return False, "Unknown action"

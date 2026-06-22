@@ -1,5 +1,7 @@
 import re
 
+from click import command
+
 class CommandParser:
 
     def parse(self, command):
@@ -82,6 +84,36 @@ class CommandParser:
                     "list files in ",
                     ""
                 )
+            }
+        if command.startswith("remember "):
+            parts = command.replace(
+                "remember ",
+                ""
+            )
+
+            if "=" in parts:
+
+                key, value = parts.split(
+                    "=",
+                    1
+                )
+
+                return {
+                    "action": "remember",
+                    "key": key.strip(),
+                    "value": value.strip()
+                }
+
+        if command.startswith("recall "):
+
+            key = command.replace(
+                "recall ",
+                ""
+            ).strip()
+
+            return {
+                "action": "recall",
+                "key": key
             }
 
         return None
