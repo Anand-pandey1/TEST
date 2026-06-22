@@ -102,6 +102,7 @@ F:\TEST
 │   ├── memory
 │   │   ├── memory_manager.py
 │   │   ├── preferences_manager.py
+|   |   ├── history_manager.py
 │   │   └── sqlite_memory.py
 │   │
 │   ├── voice
