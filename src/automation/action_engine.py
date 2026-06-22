@@ -15,6 +15,10 @@ from src.memory.preferences_manager import (
     PreferencesManager
 )
 
+from src.memory.history_manager import (
+    HistoryManager
+)
+
 
 class ActionEngine:
 
@@ -31,6 +35,8 @@ class ActionEngine:
         self.memory_manager = (MemoryManager())
 
         self.preferences_manager = (PreferencesManager())
+
+        self.history_manager = (HistoryManager())
 
 
 
@@ -205,5 +211,22 @@ class ActionEngine:
                 self.preferences_manager
                 .list_preferences()
             )
+
+        if action == "history":
+
+            return (
+                self.history_manager
+                .get_history()
+            )
+
+
+        if action == "last_command":
+
+            return (
+                self.history_manager
+                .get_last_command()
+            )
+
+
 
         return False, "Unknown action"

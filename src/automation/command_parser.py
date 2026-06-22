@@ -161,4 +161,20 @@ class CommandParser:
                 "action": "list_preferences"
             }
         
+
+        if command == "history":
+
+            return {
+                "action": "history"
+            }   
+
+
+        if command == "last command":
+
+            return {
+                "action": "last_command"
+            }
+        
+
+        
         return None

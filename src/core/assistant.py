@@ -3,6 +3,10 @@ from src.core.event_bus import EventBus
 
 from src.automation.action_engine import ActionEngine
 
+from src.memory.history_manager import (
+    HistoryManager
+)
+
 
 class TestAssistant:
 
@@ -18,6 +22,8 @@ class TestAssistant:
             "assistant_name",
             "TEST"
         )
+
+        self.history_manager = (HistoryManager())
 
     def start(self):
 
@@ -35,6 +41,13 @@ class TestAssistant:
         self,
         command
     ):
+        if command.lower() not in [
+            "history",
+            "last command"
+        ]:
+            self.history_manager.save_command(
+                command
+            )
 
         success, message = (
             self.action_engine.execute(
