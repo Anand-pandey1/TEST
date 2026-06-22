@@ -11,6 +11,10 @@ from src.memory.memory_manager import (
     MemoryManager
 )
 
+from src.memory.preferences_manager import (
+    PreferencesManager
+)
+
 
 class ActionEngine:
 
@@ -25,6 +29,8 @@ class ActionEngine:
         self.storage_resolver = StorageResolver()
 
         self.memory_manager = (MemoryManager())
+
+        self.preferences_manager = (PreferencesManager())
 
 
 
@@ -169,6 +175,35 @@ class ActionEngine:
 
             return self.memory_manager.recall(
                 intent["key"]
+            )
+        
+        #day4
+        if action == "set_preference":
+
+            return (
+                self.preferences_manager
+                .set_preference(
+                    intent["key"],
+                    intent["value"]
+                )
+            )
+
+
+        if action == "get_preference":
+
+            return (
+                self.preferences_manager
+                .get_preference(
+                    intent["key"]
+                )
+            )
+
+
+        if action == "list_preferences":
+
+            return (
+                self.preferences_manager
+                .list_preferences()
             )
 
         return False, "Unknown action"

@@ -116,4 +116,49 @@ class CommandParser:
                 "key": key
             }
 
+        #day 4 logic
+        if command.startswith(
+            "set preference "
+        ):
+
+            content = command.replace(
+                "set preference ",
+                ""
+            )
+
+            if "=" in content:
+
+                key, value = content.split(
+                    "=",
+                    1
+                )
+
+                return {
+                    "action": "set_preference",
+                    "key": key.strip(),
+                    "value": value.strip()
+                }
+
+
+        if command.startswith(
+            "get preference "
+        ):
+
+            key = command.replace(
+                "get preference ",
+                ""
+            ).strip()
+
+            return {
+                "action": "get_preference",
+                "key": key
+            }
+
+
+        if command == "list preferences":
+
+            return {
+                "action": "list_preferences"
+            }
+        
         return None
