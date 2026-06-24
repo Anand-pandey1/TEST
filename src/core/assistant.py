@@ -7,6 +7,8 @@ from src.memory.history_manager import (
     HistoryManager
 )
 
+from src.ai.nlu import NLU
+
 
 class TestAssistant:
 
@@ -24,6 +26,9 @@ class TestAssistant:
         )
 
         self.history_manager = (HistoryManager())
+
+        self.nlu = NLU()
+
 
     def start(self):
 
@@ -49,9 +54,13 @@ class TestAssistant:
                 command
             )
 
+        normalized_command = (
+            self.nlu.process(command)
+        )
+
         success, message = (
             self.action_engine.execute(
-                command
+                normalized_command
             )
         )
 

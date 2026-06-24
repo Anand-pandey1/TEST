@@ -95,9 +95,9 @@ F:\TEST
 │   │   └── config.py
 │   │
 │   ├── ai
-│   │   ├── llm.py
-│   │   ├── planner.py
-│   │   └── reasoning.py
+│   │   ├── nlu.py
+│   │   ├── intent_extractor.py
+│   │   └── 
 │   │
 │   ├── memory
 │   │   ├── memory_manager.py
@@ -106,9 +106,9 @@ F:\TEST
 │   │   └── sqlite_memory.py
 │   │
 │   ├── voice
-│   │   ├── stt.py
-│   │   ├── tts.py
-│   │   └── wake_word.py
+│   │   ├──
+│   │   ├──
+│   │   └──
 │   │
 │   ├── vision
 │   │   ├── camera.py
@@ -118,7 +118,7 @@ F:\TEST
 │   ├── automation
 │   │   ├── action_engine.py
 │   │   ├── app_control.py
-│   │   ├── task_runner.py
+│   │   ├── process_control.py
 |   |   ├── file_search.py
 |   |   ├── file_manager.py
 |   |   ├── storage_resolver.py
@@ -163,13 +163,21 @@ F:\TEST
 
 ## Phase 2 — Memory
 
-* [ ] SQLite memory
-* [ ] User preferences
-* [ ] Command history
+* [x] SQLite memory
+* [x] User preferences
+* [x] Command history
 
 ---
 
 ## Phase 3 — Voice
+
+* [x] Natural Language Understanding
+* [ ] Context Awareness
+* [ ] Task Planning
+
+---
+
+## Phase 4 — Voice
 
 * [ ] Wake word
 * [ ] Speech recognition
@@ -177,7 +185,7 @@ F:\TEST
 
 ---
 
-## Phase 4 — Local AI
+## Phase 5 — Local AI
 
 * [ ] Local LLM
 * [ ] Planner
@@ -185,7 +193,7 @@ F:\TEST
 
 ---
 
-## Phase 5 — Vision
+## Phase 6 — Vision
 
 * [ ] OCR
 * [ ] Camera control
@@ -193,7 +201,7 @@ F:\TEST
 
 ---
 
-## Phase 6 — Android Agent
+## Phase 7 — Android Agent
 
 * [ ] Device communication
 * [ ] File search
@@ -202,7 +210,7 @@ F:\TEST
 
 ---
 
-## Phase 7 — Cross Device Intelligence
+## Phase 8 — Cross Device Intelligence
 
 * [ ] Unified search
 * [ ] File transfer
@@ -211,23 +219,6 @@ F:\TEST
 
 ---
 
-# Example Commands
-
-```text
-Open calculator
-
-Find chemistry.pdf
-
-Search my phone for test32.py
-
-Transfer chemistry.pdf to my phone
-
-Set an alarm for 6 AM
-
-Show tomorrow's events
-```
-
----
 
 # Long-Term Goal
 
