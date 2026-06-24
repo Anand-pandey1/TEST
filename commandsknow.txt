@@ -1,0 +1,119 @@
+# Supported Commands for TEST Assistant
+#
+# This file documents all recognized command patterns in the project,
+# including direct parser commands and natural-language aliases.
+#
+# Sections:
+#   1. Application commands
+#   2. File search commands
+#   3. File system commands
+#   4. Memory commands
+#   5. Preference commands
+#   6. History commands
+#   7. Natural language aliases
+#
+# How to use:
+#   - Type commands exactly as shown below.
+#   - For drive-based paths, use formats like "f drive" or full paths like "f:\\folder".
+
+
+
+# 1. Application commands
+# -----------------------
+# open <app>
+#   Example: open notepad
+# close <app>
+#   Example: close calculator
+
+
+
+
+# 2. File search commands
+# -----------------------
+# find <filename>
+#   Example: find data.py
+# find file <filename>
+#   Example: find file config.txt
+# search for <filename>
+#   Example: search for README.md
+# search <filename>
+#   Example: search report.docx
+
+
+
+
+# 3. File system commands
+# ------------------------
+# create folder <name> in <drive>
+#   Example: create folder help in f drive
+# create file <name> in <drive>
+#   Example: create file config.txt in f drive
+# delete folder <name> in <drive>
+#   Example: delete folder test in f drive
+# delete file <name> in <drive>
+#   Example: delete file data.py in f drive
+# move <source> to <destination>
+#   Example: move f drive data.py to f drive test
+#   Example: move f drive source file1.py to f drive target
+# list files in <path>
+#   Example: list files in f drive
+#   Example: list files in f:\\projects
+
+# 4. Memory commands
+# ------------------
+# remember <key>=<value>
+#   Example: remember mood=happy
+# recall <key>
+#   Example: recall mood
+
+# 5. Preference commands
+# ----------------------
+# set preference <key>=<value>
+#   Example: set preference theme=dark
+# set preference <key> <value>
+#   Example: set preference theme dark
+# get preference <key>
+#   Example: get preference theme
+# list preferences
+#   Example: list preferences
+# open_preference <key>
+#   Example: open_preference editor
+# show_preference <key>
+#   Example: show_preference favorite_drive
+
+# 6. History commands
+# -------------------
+# history
+#   Example: history
+# last command
+#   Example: last command
+
+# 7. Natural language aliases
+# ---------------------------
+# open my editor
+#   maps to: open_preference editor
+# open my browser
+#   maps to: open_preference browser
+# open my workspace
+#   maps to: open_preference workspace
+# use my preferred drive
+#   maps to: show_preference favorite_drive
+
+# 8. Folder creation aliases (natural language)
+# ---------------------------------------------
+# make a folder called <name> on <drive>
+#   Example: make a folder called help on f drive
+# create a folder called <name> on <drive>
+#   Example: create a folder called help on f drive
+# create folder <name> in <drive>
+#   Example: create folder help in f drive
+# make directory <name> on <drive>
+#   Example: make directory help on f drive
+
+# 9. Search aliases (natural language)
+# ------------------------------------
+# find <filename>
+# locate <filename>
+#   Example: locate data.py
+# search for <filename>
+#   Example: search for README.md

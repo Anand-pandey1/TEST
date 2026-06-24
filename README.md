@@ -122,6 +122,7 @@ F:\TEST
 |   |   ├── file_search.py
 |   |   ├── file_manager.py
 |   |   ├── storage_resolver.py
+|   |   ├── preference_apps.py
 |   |   └── command_parser.py
 │   │
 │   └── api
