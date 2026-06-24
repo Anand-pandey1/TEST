@@ -1,11 +1,37 @@
 import re
 
+from click import command
+
 
 class IntentExtractor:
 
     def extract(self, command):
 
         command = command.lower().strip()
+
+        # OPEN MY EDITOR
+
+        if command == "open my editor":
+        
+            return "open_preference editor"
+
+# OPEN MY BROWSER
+
+        if command == "open my browser":
+
+            return "open_preference browser"
+
+# OPEN MY WORKSPACE
+
+        if command == "open my workspace":
+
+            return "open_preference workspace"
+
+# USE MY PREFERRED DRIVE
+
+        if command == "use my preferred drive":
+
+            return "show_preference favorite_drive"
 
         # CREATE FOLDER
 

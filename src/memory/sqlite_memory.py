@@ -103,6 +103,7 @@ class SQLiteMemory:
             FROM preferences
             """
         )
+        return cursor.fetchall()
 
 
     def add_history(

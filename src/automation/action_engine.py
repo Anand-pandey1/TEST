@@ -1,3 +1,5 @@
+import os
+
 from src.automation.command_parser import CommandParser
 
 from src.automation.app_control import open_app
@@ -18,6 +20,8 @@ from src.memory.preferences_manager import (
 from src.memory.history_manager import (
     HistoryManager
 )
+
+from src.automation.preference_apps import APPS
 
 
 class ActionEngine:
@@ -226,6 +230,56 @@ class ActionEngine:
                 self.history_manager
                 .get_last_command()
             )
+        
+
+
+        if action == "show_preference":
+
+            return (
+                self.preferences_manager
+                .get_preference(
+                    intent["key"]
+                )
+            )
+
+
+        if action == "open_preference":
+
+            success, result = (
+                self.preferences_manager
+                .get_preference(
+                    intent["key"]
+                )
+            )
+
+            if not success:
+                return False, result
+
+            value = result.split(
+                "=",
+                1
+            )[1].strip()
+
+            try:
+
+                app_path = APPS.get(
+                    value.lower(),
+                    value
+                    )
+
+                os.startfile(app_path)
+
+                return (
+                    True,
+                    f"Opened {value}"
+                )
+
+            except Exception as e:
+
+                return (
+                    False,
+                    str(e)
+                )
 
 
 

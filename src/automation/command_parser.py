@@ -138,6 +138,16 @@ class CommandParser:
                     "key": key.strip(),
                     "value": value.strip()
                 }
+            
+            else:
+                # Handle space-separated format: set preference key value
+                parts = content.split(None, 1)
+                if len(parts) == 2:
+                    return {
+                        "action": "set_preference",
+                        "key": parts[0].strip(),
+                        "value": parts[1].strip()
+                    }
 
 
         if command.startswith(
@@ -175,6 +185,36 @@ class CommandParser:
                 "action": "last_command"
             }
         
+
+        
+        if command.startswith(
+            "open_preference "
+        ):
+
+            key = command.replace(
+                "open_preference ",
+                ""
+            )
+
+            return {
+                "action": "open_preference",
+                "key": key
+            }
+
+        if command.startswith(
+            "show_preference "
+        ):
+
+            key = command.replace(
+                "show_preference ",
+                ""
+            )
+
+            return {
+                "action": "show_preference",
+                "key": key
+            }
+
 
         
         return None
